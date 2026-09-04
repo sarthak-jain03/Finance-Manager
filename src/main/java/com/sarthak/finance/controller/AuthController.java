@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,6 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Authentication", description = "Endpoints for user registration, login, and session logout management")
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -29,12 +32,14 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final SecurityContextRepository securityContextRepository;
 
+    @Operation(summary = "Register a new user account", description = "Creates a new user account with encrypted password")
     @PostMapping("/register")
     public ResponseEntity<UserResponse> register(@Valid @RequestBody RegisterRequest request) {
         UserResponse user = userService.registerUser(request);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Log in user", description = "Authenticates user credentials and establishes an HTTP session")
     @PostMapping("/login")
     public ResponseEntity<UserResponse> login(@Valid @RequestBody LoginRequest request,
                                               HttpServletRequest httpRequest) {
@@ -53,6 +58,7 @@ public class AuthController {
         return ResponseEntity.ok(userResponse);
     }
 
+    @Operation(summary = "Log out user", description = "Invalidates the active HTTP session and clears security context")
     @PostMapping("/logout")
     public ResponseEntity<ApiResponse> logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);

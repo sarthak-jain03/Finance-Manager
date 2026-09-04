@@ -6,11 +6,14 @@ import com.sarthak.finance.exception.BadRequestException;
 import com.sarthak.finance.model.User;
 import com.sarthak.finance.security.CustomUserDetails;
 import com.sarthak.finance.service.ReportService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Reports", description = "Endpoints for generating monthly and yearly financial reports and analytics")
 @RestController
 @RequestMapping("/api/reports")
 @RequiredArgsConstructor
@@ -18,6 +21,7 @@ public class ReportController {
 
     private final ReportService reportService;
 
+    @Operation(summary = "Get monthly financial report", description = "Generates monthly financial summary including total income, expenses, net savings, and category breakdown")
     @GetMapping({"/monthly/{year}/{month}", "/monthly"})
     public ResponseEntity<MonthlyReportResponse> getMonthlyReport(
             @PathVariable(name = "year", required = false) Integer pathYear,
@@ -38,6 +42,7 @@ public class ReportController {
         return ResponseEntity.ok(report);
     }
 
+    @Operation(summary = "Get yearly financial report", description = "Generates yearly financial summary including annual totals and month-by-month breakdown")
     @GetMapping({"/yearly/{year}", "/yearly"})
     public ResponseEntity<YearlyReportResponse> getYearlyReport(
             @PathVariable(name = "year", required = false) Integer pathYear,

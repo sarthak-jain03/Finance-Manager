@@ -106,6 +106,15 @@ The application will start on `http://localhost:8080`.
 
 ---
 
+## 📖 Swagger / OpenAPI Interactive Documentation
+
+Once the application is running, you can access the live interactive Swagger UI and OpenAPI documentation at:
+
+- 🌐 **Interactive Swagger UI**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) (or `http://localhost:8080/swagger-ui/index.html`)
+- 📄 **OpenAPI v3 JSON Spec**: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+---
+
 ## Key Features & API Endpoints
 
 ### Authentication (`/api/auth`)
