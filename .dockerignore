@@ -1,0 +1,12 @@
+.git
+.gitignore
+.idea
+.vscode
+*.iml
+target/
+assests/
+cookies.txt
+financial_manager_tests.sh
+README.md
+Dockerfile
+.dockerignore

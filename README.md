@@ -198,3 +198,37 @@ To run the automated integration test suite against a running local instance:
 chmod +x financial_manager_tests.sh
 ./financial_manager_tests.sh
 ```
+
+---
+
+## 🚀 Deploying to Render with Docker
+
+Follow these simple steps to deploy this application to **Render**:
+
+### 1. Push Code to GitHub
+Ensure all code and the `Dockerfile` are pushed to your GitHub repository:
+```bash
+git add .
+git commit -m "added Dockerfile for Render deployment"
+git push origin main
+```
+
+### 2. Create Web Service on Render
+1. Log in to [Render Dashboard](https://dashboard.render.com).
+2. Click **New +** -> **Web Service**.
+3. Connect your GitHub repository (`sarthak-jain03/Finance-Manager`).
+
+### 3. Configure Service Settings
+- **Name**: `finance-manager-api` (or any preferred name)
+- **Runtime**: **Docker** (Render will automatically detect the `Dockerfile` in the root)
+- **Region**: Select closest region (e.g., Singapore, Oregon, Frankfurt)
+- **Instance Type**: Free or Starter
+
+### 4. Environment Variables (Optional / Recommended)
+In the Render Web Service settings, add the following Environment Variables if connecting to a production PostgreSQL database:
+- `SPRING_DATASOURCE_URL` = `jdbc:postgresql://<db_host>:5432/<db_name>`
+- `SPRING_DATASOURCE_USERNAME` = `<db_username>`
+- `SPRING_DATASOURCE_PASSWORD` = `<db_password>`
+
+*(Render automatically sets `PORT`, which Spring Boot will automatically bind to).*
+
