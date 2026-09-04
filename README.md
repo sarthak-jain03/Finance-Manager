@@ -4,6 +4,11 @@ A robust, full-featured RESTful API for personal financial management built with
 
 ---
 
+## Swagger API Documentation: 
+## https://finance-manager-7zs4.onrender.com/swagger-ui/index.html
+
+---
+
 ## API Screenshots & Visual Walkthrough
 
 Below are screenshots demonstrating key API endpoints and functionality tested via Postman:
