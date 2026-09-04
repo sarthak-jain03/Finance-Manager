@@ -203,3 +203,7 @@ To run the automated integration test suite against a running local instance:
 chmod +x financial_manager_tests.sh
 ./financial_manager_tests.sh
 ```
+
+## Tests Passed:
+![Test passed](./Screenshot%202026-09-05%20025950.png)
+
