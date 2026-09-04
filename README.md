@@ -4,18 +4,18 @@ A robust, full-featured RESTful API for personal financial management built with
 
 ---
 
-## 📸 API Screenshots & Visual Walkthrough
+## API Screenshots & Visual Walkthrough
 
 Below are screenshots demonstrating key API endpoints and functionality tested via Postman:
 
-### 🔑 1. User Authentication & Session Management
+### 1. User Authentication & Session Management
 - **User Login (`POST /api/auth/login`)**: Authenticates credentials and establishes session state.
 
 ![Login Screenshot](./assests/img1.png)
 
 ---
 
-### 💳 2. Transaction Management
+### 2. Transaction Management
 - **Add Transaction (`POST /api/transactions`)**: Record income or expense transactions.
 
 ![Add Transaction](./assests/img2.png)
@@ -30,14 +30,14 @@ Below are screenshots demonstrating key API endpoints and functionality tested v
 
 ---
 
-### 🏷️ 3. Category Management
+### 3. Category Management
 - **Create Custom Category (`POST /api/categories`)**: Define personalized income or expense categories.
 
 ![Create Custom Category](./assests/img5.png)
 
 ---
 
-### 🎯 4. Savings Goals Tracker
+### 4. Savings Goals Tracker
 - **Create Savings Goal (`POST /api/goals`)**: Set up target savings goals with target dates.
 
 ![Create Savings Goal](./assests/img6.png)
@@ -48,7 +48,7 @@ Below are screenshots demonstrating key API endpoints and functionality tested v
 
 ---
 
-### 📊 5. Financial Reports & Analytics
+### 5. Financial Reports & Analytics
 - **Monthly Financial Report (`GET /api/reports/monthly?month=1&year=2024`)**: Breakdown of income, expenses, and net savings for a specific month.
 
 ![Monthly Report](./assests/img8.png)
@@ -59,7 +59,7 @@ Below are screenshots demonstrating key API endpoints and functionality tested v
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language:** Java 21
 - **Framework:** Spring Boot 3.4.1
@@ -71,7 +71,7 @@ Below are screenshots demonstrating key API endpoints and functionality tested v
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -106,7 +106,7 @@ The application will start on `http://localhost:8080`.
 
 ---
 
-## 📑 Key Features & API Endpoints
+## Key Features & API Endpoints
 
 ### Authentication (`/api/auth`)
 - `POST /api/auth/register` — Register a new user account
@@ -138,7 +138,7 @@ The application will start on `http://localhost:8080`.
 
 ---
 
-## 🧠 Architectural & Design Notes
+## Architectural & Design Notes
 
 1. **Layered Structure:** Standard Controller-Service-Repository pattern. Services handle business logic while Controllers handle request/response mapping and validation.
 2. **Session Security:** Spring Security manages HTTP sessions with HTTP-only cookies. Passwords are hashed using BCrypt.
@@ -148,7 +148,7 @@ The application will start on `http://localhost:8080`.
 
 ---
 
-## ⚠️ Error Handling
+## Error Handling
 
 Standardized response format across all API exceptions:
 
@@ -165,7 +165,7 @@ Standardized response format across all API exceptions:
 
 ---
 
-## 📁 Project Folder Structure
+## Project Folder Structure
 
 ```
 src/main/java/com/sarthak/finance/
@@ -181,7 +181,7 @@ src/main/java/com/sarthak/finance/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 To run the automated integration test suite against a running local instance:
 
