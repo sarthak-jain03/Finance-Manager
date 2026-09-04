@@ -1,58 +1,115 @@
 # Personal Finance Manager API
 
-Backend REST API for tracking personal income, expenses, custom categories, savings goals, and generating financial reports.
+A robust, full-featured RESTful API for personal financial management built with **Spring Boot 3.4.1** and **Java 21**. The application enables users to track income and expense transactions, organize finances with standard and custom categories, track long-term savings goals with dynamic progress calculations, and generate monthly and yearly financial reports.
 
-## Tech Stack
+---
+
+## 📸 API Screenshots & Visual Walkthrough
+
+Below are screenshots demonstrating key API endpoints and functionality tested via Postman:
+
+### 🔑 1. User Authentication & Session Management
+- **User Login (`POST /api/auth/login`)**: Authenticates credentials and establishes session state.
+
+![Login Screenshot](./assests/img1.png)
+
+---
+
+### 💳 2. Transaction Management
+- **Add Transaction (`POST /api/transactions`)**: Record income or expense transactions.
+
+![Add Transaction](./assests/img2.png)
+
+- **Get All Transactions (`GET /api/transactions`)**: Retrieve user transactions with filtering and pagination.
+
+![Get Transactions](./assests/img3.png)
+
+- **Update Transaction (`PUT /api/transactions/{id}`)**: Update transaction details dynamically.
+
+![Update Transaction](./assests/img4.png)
+
+---
+
+### 🏷️ 3. Category Management
+- **Create Custom Category (`POST /api/categories`)**: Define personalized income or expense categories.
+
+![Create Custom Category](./assests/img5.png)
+
+---
+
+### 🎯 4. Savings Goals Tracker
+- **Create Savings Goal (`POST /api/goals`)**: Set up target savings goals with target dates.
+
+![Create Savings Goal](./assests/img6.png)
+
+- **Update Savings Goal (`PUT /api/goals/{id}`)**: Modify target amounts and track progress percentages.
+
+![Update Savings Goal](./assests/img7.png)
+
+---
+
+### 📊 5. Financial Reports & Analytics
+- **Monthly Financial Report (`GET /api/reports/monthly?month=1&year=2024`)**: Breakdown of income, expenses, and net savings for a specific month.
+
+![Monthly Report](./assests/img8.png)
+
+- **Yearly Financial Report (`GET /api/reports/yearly?year=2024`)**: Comprehensive monthly breakdown and annual financial analytics.
+
+![Yearly Report](./assests/img9.png)
+
+---
+
+## 🛠️ Tech Stack
 
 - **Language:** Java 21
 - **Framework:** Spring Boot 3.4.1
-- **Security:** Spring Security (Session-based authentication)
-- **Database:** PostgreSQL (supports Supabase / local instance)
-- **ORM:** Spring Data JPA / Hibernate
-- **Build Tool:** Maven
+- **Security:** Spring Security (Session-based Cookie Authentication)
+- **Database:** PostgreSQL (Supports Supabase / Local Instance)
+- **ORM / Persistence:** Spring Data JPA / Hibernate
+- **Build & Dependency Management:** Maven
+- **Testing:** Shell Automated Integration Test Suite (`financial_manager_tests.sh`)
 
+---
 
-## Requirements
+## 🚀 Getting Started
 
-- JDK 21 or higher
-- Maven 3.9+
-- PostgreSQL database instance
+### Prerequisites
 
-## Local Setup
+- **JDK 21** or higher
+- **Maven 3.9+**
+- **PostgreSQL** database instance
 
-### 1. Repository Setup
+### 1. Clone & Configure
 
 ```bash
-git clone https://github.com/sarthak-jain03/Finance-Manager
-cd Syfe_Assignment_Sarthak_Jain
+git clone https://github.com/sarthak-jain03/Finance-Manager.git
+cd Finance-Manager
 ```
 
-### 2. Database Configuration
-
-Database details are configured in `src/main/resources/application.properties`. Ensure your PostgreSQL server details match:
+Configure your PostgreSQL database connection in `src/main/resources/application.properties`:
 
 ```properties
-spring.datasource.url=jdbc:postgresql://<host>:5432/<dbname>
-spring.datasource.username=<username>
-spring.datasource.password=<password>
+spring.datasource.url=jdbc:postgresql://localhost:5432/finance_db
+spring.datasource.username=postgres
+spring.datasource.password=yourpassword
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-### 3. Run Application
+### 2. Build & Run Application
 
 ```bash
 mvn clean package -DskipTests
 mvn spring-boot:run
 ```
 
-The server runs on `http://localhost:8080`.
+The application will start on `http://localhost:8080`.
 
+---
 
-
-## Key Features & API Endpoints
+## 📑 Key Features & API Endpoints
 
 ### Authentication (`/api/auth`)
-- `POST /api/auth/register` — Register a new account
+- `POST /api/auth/register` — Register a new user account
 - `POST /api/auth/login` — Login and establish session cookie
 - `POST /api/auth/logout` — Invalidate user session
 
@@ -68,21 +125,20 @@ The server runs on `http://localhost:8080`.
 - `POST /api/categories` — Create custom category
 - `DELETE /api/categories/{id}` — Remove custom category
 
-### Savings Goals (`/api/savings-goals`)
-- `POST /api/savings-goals` — Set savings goal with target date and amount
-- `GET /api/savings-goals` — List goals with calculated progress
-- `GET /api/savings-goals/{id}` — Fetch goal status
-- `PUT /api/savings-goals/{id}` — Update target amount or target date
-- `DELETE /api/savings-goals/{id}` — Delete savings goal
+### Savings Goals (`/api/goals`)
+- `POST /api/goals` — Set savings goal with target date and amount
+- `GET /api/goals` — List goals with calculated progress
+- `GET /api/goals/{id}` — Fetch goal status
+- `PUT /api/goals/{id}` — Update target amount or target date
+- `DELETE /api/goals/{id}` — Delete savings goal
 
 ### Financial Reports (`/api/reports`)
-- `GET /api/reports/monthly?month=9&year=2026` — Get monthly summary (total income, total expense, category breakdown)
-- `GET /api/reports/yearly?year=2026` — Get yearly financial overview
+- `GET /api/reports/monthly?month=1&year=2024` — Get monthly summary (total income, total expense, category breakdown)
+- `GET /api/reports/yearly?year=2024` — Get yearly financial overview
 
 ---
 
-
-## Architectural & Design Notes
+## 🧠 Architectural & Design Notes
 
 1. **Layered Structure:** Standard Controller-Service-Repository pattern. Services handle business logic while Controllers handle request/response mapping and validation.
 2. **Session Security:** Spring Security manages HTTP sessions with HTTP-only cookies. Passwords are hashed using BCrypt.
@@ -92,7 +148,7 @@ The server runs on `http://localhost:8080`.
 
 ---
 
-## Error Handling
+## ⚠️ Error Handling
 
 Standardized response format across all API exceptions:
 
@@ -109,7 +165,7 @@ Standardized response format across all API exceptions:
 
 ---
 
-## Folder Structure
+## 📁 Project Folder Structure
 
 ```
 src/main/java/com/sarthak/finance/
@@ -121,4 +177,15 @@ src/main/java/com/sarthak/finance/
 ├── repository/          # Spring Data JPA repositories
 ├── security/            # Security configs, user details service
 └── service/             # Business logic services
+```
+
+---
+
+## 🧪 Testing
+
+To run the automated integration test suite against a running local instance:
+
+```bash
+chmod +x financial_manager_tests.sh
+./financial_manager_tests.sh
 ```
