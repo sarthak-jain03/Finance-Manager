@@ -6,10 +6,10 @@ A robust, full-featured RESTful API for personal financial management built with
 
 ---
 ## Deployment Link:
-## https://finance-manager-7zs4.onrender.com
+## https://finance-manager-production-6388.up.railway.app/
 ---
 ## Swagger API Documentation: 
-## https://finance-manager-7zs4.onrender.com/swagger-ui/index.html
+## https://finance-manager-production-6388.up.railway.app/swagger-ui/index.html
 
 ---
 
